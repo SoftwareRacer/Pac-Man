@@ -23,6 +23,7 @@ public class Gui extends JPanel implements ActionListener {
     private final int PACMAN_SPEED = 6;
 
     private int N_GHOSTS = 8;
+    private int MAX_SCORE = N_BLOCKS * N_BLOCKS - 84;
     private int lives, score;
     private int[] dx, dy;
     private int[] ghost_x, ghost_y, ghost_dx, ghost_dy, ghostSpeed;
@@ -164,7 +165,7 @@ public class Gui extends JPanel implements ActionListener {
 
         while (i < N_BLOCKS * N_BLOCKS && finished) {
 
-            if ((screenData[i]) != 0 && score < 245) {
+            if ((screenData[i]) != 0 && score < MAX_SCORE) {
                 finished = false;
             }
 
@@ -323,9 +324,9 @@ public class Gui extends JPanel implements ActionListener {
         } else if (req_dx == 1) {
         	g2d.drawImage(right, pacman_x + 1, pacman_y + 1, this);
         } else if (req_dy == -1) {
-        	g2d.drawImage(down, pacman_x + 1, pacman_y + 1, this);
-        } else {
         	g2d.drawImage(up, pacman_x + 1, pacman_y + 1, this);
+        } else {
+        	g2d.drawImage(down, pacman_x + 1, pacman_y + 1, this);
         }
     }
 
